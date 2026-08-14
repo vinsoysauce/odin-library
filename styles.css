@@ -89,6 +89,17 @@ main {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.card-container {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.content {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+
 .add-button-container {
     display: grid;
     justify-items: center;

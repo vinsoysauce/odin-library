@@ -16,14 +16,13 @@ const myLibrary = [
     }, 
 ];
 
-function Book(author, title, cover, pages) {
+function Book(author, title, pages) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor");
     }
     this.id = crypto.randomUUID;
     this.title = title;
     this.author = author;
-    this.cover = cover;
     this.pages = pages;
     
 }
@@ -32,10 +31,33 @@ function addBookToLibrary() {
 
 }
 
+
 function displayBookToLibrary() {
+    const container = document.querySelector('.card-container');
     for (let book in myLibrary) {
-        console.log(myLibrary[book])
+        const card = document.createElement("div");
+        card.classList.add("content");
+        for (let value in myLibrary[book]){
+            const items = document.createElement("div");
+            items.classList.add("items")
+            items.textContent += myLibrary[book][value];
+            card.appendChild(items)
+            
+        }
+        container.appendChild(card);
     }
 }
 
+
+
+
 displayBookToLibrary()
+
+
+
+
+
+
+// const container = document.querySelector('.card-container');
+// const content = document.createElement("div");
+// content.classList.add("content");
