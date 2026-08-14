@@ -1,0 +1,96 @@
+
+/* * {
+  border: 1px solid red;
+} */
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+body {
+
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    justify-items: center;
+}
+
+.heading-container {
+    display: grid;
+    grid-auto-flow: column;
+    align-content: center;
+    border-style: dashed;
+    padding: 10px;
+}
+
+img {
+    width: 3rem;
+    height: 3rem;
+}
+
+header {
+    align-content: center;
+}
+
+main {
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    height: 70vh;
+    width: 70vw;
+    border-radius: 20px;
+    background-color: #e2e8f0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.add-button-container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
