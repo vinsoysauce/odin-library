@@ -3,6 +3,7 @@
   border: 1px solid red;
 } */
 
+
 /*
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
@@ -52,72 +53,113 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-
+    background-color:#f0f2f5;
 }
 
 .container {
     height: 100vh;
     display: grid;
     grid-template-rows: 1fr 5fr;
-    justify-items: center;
-}
 
-.heading-container {
-    display: grid;
-    grid-auto-flow: column;
-    align-content: center;
-    border-style: dashed;
-    padding: 10px;
-}
-
-img {
-    width: 3rem;
-    height: 3rem;
 }
 
 header {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     align-content: center;
 }
 
-main {
-    display: grid;
-    grid-template-rows: 4fr 1fr;
-    height: 70vh;
-    width: 70vw;
-    border-radius: 20px;
-    background-color: #e2e8f0;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.card-container {
+.logo-button-container {
     display: grid;
     grid-auto-flow: column;
+    border-bottom: 1px solid #e7e9eb;
 }
 
-.content {
-    display: grid;
-    grid-auto-flow: row;
+img {
+    height: 30px;
+    width: 30px;
+    padding-bottom: 3px;
 }
 
-
-.add-button-container {
+.logo-container {
     display: grid;
-    justify-items: center;
+    grid-auto-flow: column;
+    justify-content: start;
     align-items: center;
+    background-color: white;
+    padding: 20px;
+
 }
 
-.add-button-container > button {
-  background-color: #04aa6d;
-  color: #ffffff;
-  padding: 12px 24px;
+.button-container {
+    display: grid;
+    justify-content: end;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+
+}
+
+#add-book-button {
+  background-color: white;
+  color: black;
   border-radius: 6px;
   font-size: 15px;
-  border: none;
+  border: 1px solid #e7e9eb;
   box-shadow: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  width: 120px;
+  height: 30px;
+  text-align: center;
 }
 
-.add-button-container > button:hover {
+#add-book-button:hover {
     background-color: #03915d;
+    color: white;
+}
+
+.status-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 25px;
+    padding: 20px;
+}
+
+.status-card {
+    background-color: white;
+    border: 1px solid #e7e9eb;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.status {
+    font-size: small;
+    color: #6c768a;
+}
+
+#total, #read, #unread {
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+#read {
+    color: #27ae61;
+}
+
+#unread {
+    color:#2596be;
+}
+
+
+
+main {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+h3 {
+    color: #6c768a;
 }

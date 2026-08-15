@@ -3,27 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <script src="./script.js" defer></script>
     <title>Javascript Library</title>
 </head>
 <body>
-    <div class="container">
+    <div class=container>
         <header>
-            <div class="heading-container">
+            <div class="logo-button-container">
+            <div class="logo-container">
                 <img src="./svg/bookshelf.svg">
-                <h1>Javascript Library</h1>
+                <h2>Simple Library</h2>
             </div>
+            <div class="button-container">
+                <button id="add-book-button">+ Add Book</button>
+            </div>
+        </div>
+        <div class="status-container">
+            <div class="status-card">
+                <p id="total">3</p>
+                <p class="status">Total Books</p>
+                </div>
+            <div class="status-card">
+                    <p id="read">0</p>
+                    <p class="status">Read Books</p>
+            </div>
+            <div class="status-card">
+                <p id="unread">3</p>
+                <p class="status">Unread Books</p>
+            </div>
+        </div>
         </header>
         <main>
-            <div class="card-container">
-
-            </div>
-            <div class="add-button-container">
-                <button>Add New Book</button>
-            </div>
+            <h3>Your Books</h3>
         </main>
-
     </div>
 </body>
 </html>
