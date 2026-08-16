@@ -157,8 +157,25 @@ img {
 
 
 main {
+    display: grid;
+    grid-auto-flow: row;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.books-container {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: start;
+}
+
+.book {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.title {
+    font-weight: bolder;
 }
 
 h3 {
