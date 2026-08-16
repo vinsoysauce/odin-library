@@ -163,21 +163,50 @@ main {
     padding-right: 20px;
 }
 
+h3 {
+    color: #6c768a;
+}
+
 .books-container {
     display: grid;
     grid-auto-flow: column;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+}
+
+.bookPages {
+    display: flex;
+    justify-content: flex-end;
+    color: #6c768a;
 }
 
 .book {
-    display: grid;
-    grid-auto-flow: row;
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.book-actions {
+    display: flex;
+    flex-direction: row;
+
 }
 
 .title {
     font-weight: bolder;
 }
 
-h3 {
+.author, .read {
     color: #6c768a;
 }
+
+.pages {
+    display: grid;
+    justify-items: end;
+    color: #6c768a;
+}
+

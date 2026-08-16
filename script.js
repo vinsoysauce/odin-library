@@ -21,19 +21,29 @@ function addBookToLibrary(title, author, read, pages) {
 function displayBook() {
   const container = document.querySelector(".books-container");
   for (item in myLibrary) {
+  const bookCard = document.createElement("div");
+  bookCard.classList.add("bookCard");
   const book = document.createElement("div");
   book.classList.add("book");
+  const bookPages = document.createElement("div");
+  bookPages.classList.add("bookPages");
+  const details  = document.createElement("div");
+  details.classList.add("book-details");
+  const actions = document.createElement("div");
+  actions.classList.add("book-actions");
     for (value in myLibrary[item]) {
       if (myLibrary[item][value] === myLibrary[item].title) {
         const title = document.createElement("div");
         title.classList.add("title")
         title.textContent += (myLibrary[item][value]);
-        book.appendChild(title)
+        details.appendChild(title)
+        book.appendChild(details)
       } else if (myLibrary[item][value] === myLibrary[item].author) {
         const author = document.createElement("div");
         author.classList.add("author")
         author.textContent += (myLibrary[item][value]);
-        book.appendChild(author)
+        details.appendChild(author)
+        book.appendChild(details)
       } else if (myLibrary[item][value] === myLibrary[item].read) {
         const read = document.createElement("div");
         read.classList.add("read");
@@ -42,15 +52,25 @@ function displayBook() {
         } else {
           read.textContent += 'Status: Not read yet';
         }
-        book.appendChild(read);
+        details.appendChild(read)
+        book.appendChild(details)
       } else if (myLibrary[item][value] === myLibrary[item].pages) {
-          const pages = document.createElement("div");
-          pages.classList.add("pages")
-          pages.textContent += (myLibrary[item][value]);
-        book.appendChild(pages)
+        const removeBook = document.createElement("img");
+        removeBook.classList.add("remove-book");
+        removeBook.src = "/svg/remove.svg";
+        const readOrUnread = document.createElement("img");
+        readOrUnread.classList.add("readOrUnread");
+        readOrUnread.src = "/svg/read.svg";
+        actions.appendChild(removeBook)
+        book.appendChild(actions)
+        actions.appendChild(readOrUnread);
+        book.appendChild(actions)
+        bookPages.textContent += (myLibrary[item][value])
       }
     }
-    container.appendChild(book)
+    bookCard.appendChild(book);
+    bookCard.appendChild(bookPages);
+    container.appendChild(bookCard);
   }
 }
 
