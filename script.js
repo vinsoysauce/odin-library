@@ -10,6 +10,13 @@ function Book( title, author, read, pages) {
   this.author = author;
   this.read = read;
   this.pages = pages;
+  this.info = function(){
+    if (this.read) {
+        return `${this.title} by ${this.author}, ${this.pages}, finished reading`
+    } else {
+        return `${this.title} by ${this.author}, ${this.pages}, not read yet`
+    }
+  }
 }
 
 function addBookToLibrary(title, author, read, pages) {
@@ -65,7 +72,7 @@ function displayBook() {
         book.appendChild(actions)
         actions.appendChild(readOrUnread);
         book.appendChild(actions)
-        bookPages.textContent += (myLibrary[item][value])
+        bookPages.textContent += (myLibrary[item][value] + " pages");
       }
     }
     bookCard.appendChild(book);
@@ -75,10 +82,31 @@ function displayBook() {
 }
 
 
+const openBtn = document.getElementById("add-book-button");
+const closeBtn = document.getElementById("closeModal");
+const modal = document.getElementById("modal");
+
+openBtn.addEventListener("click", () => {
+  modal.classList.add("open");
+})
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("open");
+})
+
+const addBookButton = document.querySelector('#add-book-button')
+addBookButton.onclick = () => {
+  
+}
 
 
-addBookToLibrary("Man's Search for Meaning", "Viktor Frankl", true, 250)
-addBookToLibrary("Atlas Shrugged", "Ayn Rand", false, 300)
+
+addBookToLibrary("Man's Search for Meaning", "Viktor Frankl", false, 184)
+addBookToLibrary("Tuesdays with Morrie", "Mitch Albom", false, 224)
+addBookToLibrary("The Three Body Problem", "Cixin Liu", false, 416)
+addBookToLibrary("The Dark Forest", "Cixin Liu", false, 528)
+addBookToLibrary("Death's End", "Cixin Liu", false, 624)
 displayBook()
+
 
 
