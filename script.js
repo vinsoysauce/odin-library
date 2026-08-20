@@ -83,7 +83,7 @@ function displayBook() {
 
 
 const openBtn = document.getElementById("add-book-button");
-const closeBtn = document.getElementById("closeModal");
+const closeBtn = document.getElementById("cancel-book-button");
 const modal = document.getElementById("modal");
 
 openBtn.addEventListener("click", () => {
