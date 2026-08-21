@@ -24,7 +24,7 @@
                             <h5>Add New Book</h5>
                         </div>
                         <hr>
-                        <form action="" method="post">
+                        <form action="script.js" method="POST" id="form">
                             <div class="form-container">
                             <div class="form-group">
                                 <label class="label-group" for="book_title">Title</label>
@@ -39,17 +39,16 @@
                                 <input type="number" id="book_pages" name="book_pages" required>
                             </div>
                             <div id="form-checkbox">
-                                <input type="checkbox" id="book_read" name="book_read" value="book_read" required>
+                                <input type="checkbox" id="book_read" name="book_read">
                                 <label class="label-group" for="book_read">Already read?</label>
                             </div>
                             </div>
-                        </form>
                         <hr>
                         <div class="modal-buttons">
-                            <button id="cancel-book-button">Cancel</button>
-                            <button id="add-book-button">+ Add Book</button>
+                            <button type="reset" value="reset" id="cancel">Cancel</button>
+                            <button type="submit" value="submit" id="submit">+ Add Book</button>
                         </div>
-
+                        </form>
                     </div>
                 </div>
             </div>

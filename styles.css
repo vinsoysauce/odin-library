@@ -165,6 +165,12 @@ hr {
     justify-items: start;
 }
 
+input[type=text], input[type=number] {
+    border-radius: 5px;
+    background-color: #dee4f2;
+    border-style: none;
+}
+
 .label-group {
     font-size: 12px;
 }
@@ -175,7 +181,7 @@ hr {
     gap: 10px;
 }
 
-#cancel-book-button {
+#cancel-book-button, #cancel {
  background-color: white;
   color: #6c768a;
   border-radius: 6px;
@@ -189,13 +195,13 @@ hr {
   text-align: center;
 }
 
-#cancel-book-button:hover {
+#cancel-book-button:hover, #cancel:hover {
     background-color: #912203;
     color: white;
 }
 
 
-#add-book-button {
+#add-book-button, #submit {
   background-color: white;
   color: #6c768a;
   border-radius: 6px;
@@ -209,7 +215,7 @@ hr {
   text-align: center;
 }
 
-#add-book-button:hover {
+#add-book-button:hover, #submit:hover {
     background-color: #03915d;
     color: white;
 }
