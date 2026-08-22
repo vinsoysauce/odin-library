@@ -26,62 +26,6 @@ function addBookToLibrary(title, author, read, pages) {
   displayBook()
 }
 
-// function displayBook() {
-//   for (item in myLibrary[myLibrary.length - 1]) {
-//   const container = document.querySelector(".books-container");
-//   const bookCard = document.createElement("div");
-//   bookCard.classList.add("bookCard");
-//   const book = document.createElement("div");
-//   book.classList.add("book");
-//   const bookPages = document.createElement("div");
-//   bookPages.classList.add("bookPages");
-//   const details  = document.createElement("div");
-//   details.classList.add("book-details");
-//   const actions = document.createElement("div");
-//   actions.classList.add("book-actions");
-//     for (value in myLibrary[item]) {
-//       if (myLibrary[item][value] === myLibrary[item].title) {
-//         const title = document.createElement("div");
-//         title.classList.add("title")
-//         title.textContent = (myLibrary[item][value]);
-//         details.appendChild(title)
-//         book.appendChild(details)
-//       } else if (myLibrary[item][value] === myLibrary[item].author) {
-//         const author = document.createElement("div");
-//         author.classList.add("author")
-//         author.textContent = (myLibrary[item][value]);
-//         details.appendChild(author)
-//         book.appendChild(details)
-//       } else if (myLibrary[item][value] === myLibrary[item].read) {
-//         const read = document.createElement("div");
-//         read.classList.add("read");
-//         if (myLibrary[item].read) {
-//           read.textContent = 'Status: Read';
-//         } else {
-//           read.textContent = 'Status: Not read yet';
-//         }
-//         details.appendChild(read)
-//         book.appendChild(details)
-//       } else if (myLibrary[item][value] === myLibrary[item].pages) {
-//         const removeBook = document.createElement("img");
-//         removeBook.classList.add("remove-book");
-//         removeBook.src = "/svg/remove.svg";
-//         const readOrUnread = document.createElement("img");
-//         readOrUnread.classList.add("readOrUnread");
-//         readOrUnread.src = "/svg/read.svg";
-//         actions.appendChild(removeBook)
-//         book.appendChild(actions)
-//         actions.appendChild(readOrUnread);
-//         book.appendChild(actions)
-//         bookPages.textContent = (myLibrary[item][value] + " pages");
-//       }
-//     }
-//     bookCard.appendChild(book);
-//     bookCard.appendChild(bookPages);
-//     container.appendChild(bookCard);
-//   }
-// }
-
 function displayBook() {
   const container = document.querySelector(".books-container");
   const bookCard = document.createElement("div");
@@ -153,19 +97,12 @@ closeBtn.addEventListener("click", () => {
 })
 
 
-// const addBookButton = document.querySelector('#add-book-button')
-//   addBookButton.onclick = () => {
-//     console.log(form.elements[0])
-//   addBookToLibrary(form.elements[0], form.elements[1], form.elements[2], form.elements[3], form.elements[4])
-//   event.preventDefault();
-// }
-
 const form = document.getElementById('form')
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     const title = document.getElementById('book_title').value;
     const author = document.getElementById('book_author').value;
-    const read = true;
+    const read = document.getElementById('book_read').checked;
     const pages = Number(document.getElementById('book_pages').value)
     addBookToLibrary(title, author, read, pages);
     modal.classList.remove("open");
