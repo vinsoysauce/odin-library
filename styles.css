@@ -314,6 +314,10 @@ h3 {
     padding: 0;
 }
 
+.remove-book:hover, .readOrUnread:hover {
+    background-color: #6c768a49;
+} 
+
 .title {
     font-weight: bolder;
 }
