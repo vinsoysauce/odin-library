@@ -39,6 +39,7 @@ function displayBook() {
   const actions = document.createElement("div");
   actions.classList.add("book-actions");
   const lastBook = myLibrary[myLibrary.length - 1]
+  bookCard.dataset.bookId = lastBook.id;
   for (const item in lastBook) {
       if (lastBook[item] === lastBook.title) {
         const title = document.createElement("div");
@@ -66,6 +67,9 @@ function displayBook() {
         const removeBook = document.createElement("img");
         removeBook.classList.add("remove-book");
         removeBook.src = "/svg/remove.svg";
+        removeBook.addEventListener('click', (event) => {
+          container.removeChild(bookCard)
+        })
         const readOrUnread = document.createElement("img");
         readOrUnread.classList.add("readOrUnread");
         readOrUnread.src = "/svg/read.svg";
@@ -75,10 +79,12 @@ function displayBook() {
         book.appendChild(actions)
         bookPages.textContent = (lastBook[item] + " pages");
       }
+      
     }
     bookCard.appendChild(book);
     bookCard.appendChild(bookPages);
     container.appendChild(bookCard);
+    
   }
 
 
@@ -109,8 +115,6 @@ form.addEventListener('submit', (event) => {
     form.reset();
 });
 
-addBookToLibrary("Man's Search for Meaning", "Viktor Frankl", false, 184)
-addBookToLibrary("Tuesdays with Morrie", "Mitch Albom", false, 224)
 addBookToLibrary("The Three Body Problem", "Cixin Liu", false, 416)
 addBookToLibrary("The Dark Forest", "Cixin Liu", false, 528)
 addBookToLibrary("Death's End", "Cixin Liu", false, 624)
