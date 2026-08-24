@@ -316,6 +316,7 @@ h3 {
 
 .remove-book:hover, .readOrUnread:hover {
     background-color: #6c768a49;
+    cursor: pointer;
 } 
 
 .title {

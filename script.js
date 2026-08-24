@@ -66,7 +66,11 @@ function displayBook() {
         })
         const readOrUnread = document.createElement("img");
         readOrUnread.classList.add("readOrUnread");
-        readOrUnread.src = "/svg/read.svg";
+        if (lastBook.read) {
+          readOrUnread.src = "/svg/read.svg";
+        } else {
+            readOrUnread.src = "/svg/unread.svg";
+        }
         actions.appendChild(removeBook)
         book.appendChild(actions)
         actions.appendChild(readOrUnread);
