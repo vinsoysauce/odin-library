@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book( title, author, read, pages) {
   // the constructor...
@@ -10,13 +10,6 @@ function Book( title, author, read, pages) {
   this.author = author;
   this.read = read;
   this.pages = pages;
-  this.info = function(){
-    if (this.read) {
-        return `${this.title} by ${this.author}, ${this.pages}, finished reading`
-    } else {
-        return `${this.title} by ${this.author}, ${this.pages}, not read yet`
-    }
-  }
 }
 
 function addBookToLibrary(title, author, read, pages) {
@@ -40,7 +33,7 @@ function displayBook() {
   actions.classList.add("book-actions");
   const lastBook = myLibrary[myLibrary.length - 1]
   bookCard.dataset.bookId = lastBook.id;
-  for (const item in lastBook) {
+  for (let item in lastBook) {
       if (lastBook[item] === lastBook.title) {
         const title = document.createElement("div");
         title.classList.add("title")
@@ -68,6 +61,7 @@ function displayBook() {
         removeBook.classList.add("remove-book");
         removeBook.src = "/svg/remove.svg";
         removeBook.addEventListener('click', (event) => {
+          myLibrary = myLibrary.filter((book) => book.id !== lastBook.id)
           container.removeChild(bookCard)
         })
         const readOrUnread = document.createElement("img");
@@ -78,13 +72,14 @@ function displayBook() {
         actions.appendChild(readOrUnread);
         book.appendChild(actions)
         bookPages.textContent = (lastBook[item] + " pages");
+        readOrUnread.addEventListener('click', (event) => {
+
+        })
       }
-      
     }
     bookCard.appendChild(book);
     bookCard.appendChild(bookPages);
     container.appendChild(bookCard);
-    
   }
 
 
@@ -118,4 +113,3 @@ form.addEventListener('submit', (event) => {
 addBookToLibrary("The Three Body Problem", "Cixin Liu", false, 416)
 addBookToLibrary("The Dark Forest", "Cixin Liu", false, 528)
 addBookToLibrary("Death's End", "Cixin Liu", false, 624)
-
