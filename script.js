@@ -19,6 +19,14 @@ function addBookToLibrary(title, author, read, pages) {
   displayBook()
 }
 
+Book.prototype.changeRead = function() {
+  if (this.read === true) {
+    this.read = false;
+  } else {
+    this.read = true;
+  }
+}
+
 function displayBook() {
   const container = document.querySelector(".books-container");
   const bookCard = document.createElement("div");
@@ -33,6 +41,8 @@ function displayBook() {
   actions.classList.add("book-actions");
   const lastBook = myLibrary[myLibrary.length - 1]
   bookCard.dataset.bookId = lastBook.id;
+          const read = document.createElement("div");
+                  read.classList.add("readStatus");
   for (let item in lastBook) {
       if (lastBook[item] === lastBook.title) {
         const title = document.createElement("div");
@@ -47,8 +57,7 @@ function displayBook() {
         details.appendChild(author)
         book.appendChild(details)
       } else if (lastBook[item] === lastBook.read) {
-        const read = document.createElement("div");
-        read.classList.add("read");
+
         if (lastBook.read) {
           read.textContent = 'Status: Read';
         } else {
@@ -66,19 +75,25 @@ function displayBook() {
         })
         const readOrUnread = document.createElement("img");
         readOrUnread.classList.add("readOrUnread");
+        
+        readOrUnread.addEventListener('click', (event) => {
+          lastBook.changeRead()
+          if (lastBook.read) {
+                      read.textContent = 'Status: Read';
+        } else {
+          read.textContent = 'Status: Not read yet';
+          }
+        })
         if (lastBook.read) {
           readOrUnread.src = "/svg/read.svg";
         } else {
-            readOrUnread.src = "/svg/unread.svg";
+          readOrUnread.src = "/svg/unread.svg";
         }
         actions.appendChild(removeBook)
         book.appendChild(actions)
         actions.appendChild(readOrUnread);
         book.appendChild(actions)
         bookPages.textContent = (lastBook[item] + " pages");
-        readOrUnread.addEventListener('click', (event) => {
-
-        })
       }
     }
     bookCard.appendChild(book);
