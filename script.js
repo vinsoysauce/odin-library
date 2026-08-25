@@ -67,7 +67,7 @@ function displayBook() {
       } else if (lastBook[item] === lastBook.pages) {
         const removeBook = document.createElement("img");
         removeBook.classList.add("remove-book");
-        removeBook.src = "/svg/remove.svg";
+        removeBook.src = "./svg/remove.svg";
         removeBook.addEventListener('click', (event) => {
           myLibrary = myLibrary.filter((book) => book.id !== lastBook.id)
           container.removeChild(bookCard)
@@ -76,10 +76,10 @@ function displayBook() {
         const readOrUnread = document.createElement("img");
         readOrUnread.classList.add("readOrUnread");
         if (lastBook.read) {
-            readOrUnread.src = "/svg/read.svg";
+            readOrUnread.src = "./svg/read.svg";
             bookCard.style.borderLeft = "8px solid #27ae61";
           } else {
-            readOrUnread.src = "/svg/unread.svg";
+            readOrUnread.src = "./svg/unread.svg";
             bookCard.style.borderLeft = "8px solid #2596be";
           }
         readOrUnread.addEventListener('click', (event) => {
@@ -87,11 +87,11 @@ function displayBook() {
           if (lastBook.read) {
             read.textContent = 'Status: Read';
             bookCard.style.borderLeft = "8px solid #27ae61";
-            readOrUnread.src = "/svg/read.svg";
+            readOrUnread.src = "./svg/read.svg";
           } else {
             read.textContent = 'Status: Not read yet';
             bookCard.style.borderLeft = "8px solid #2596be";
-            readOrUnread.src = "/svg/unread.svg";
+            readOrUnread.src = "./svg/unread.svg";
           }
           updateTracking()
           })
