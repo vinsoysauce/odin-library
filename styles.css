@@ -290,7 +290,7 @@ h3 {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    border-left: 8px solid rgb(0, 60, 255);
+    /* border-left: 8px solid rgb(0, 60, 255); */
 }
 
 .book-details {

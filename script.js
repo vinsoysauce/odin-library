@@ -41,8 +41,8 @@ function displayBook() {
   actions.classList.add("book-actions");
   const lastBook = myLibrary[myLibrary.length - 1]
   bookCard.dataset.bookId = lastBook.id;
-          const read = document.createElement("div");
-                  read.classList.add("readStatus");
+  const read = document.createElement("div");
+  read.classList.add("readStatus");
   for (let item in lastBook) {
       if (lastBook[item] === lastBook.title) {
         const title = document.createElement("div");
@@ -57,7 +57,6 @@ function displayBook() {
         details.appendChild(author)
         book.appendChild(details)
       } else if (lastBook[item] === lastBook.read) {
-
         if (lastBook.read) {
           read.textContent = 'Status: Read';
         } else {
@@ -72,23 +71,30 @@ function displayBook() {
         removeBook.addEventListener('click', (event) => {
           myLibrary = myLibrary.filter((book) => book.id !== lastBook.id)
           container.removeChild(bookCard)
+          updateTracking()
         })
         const readOrUnread = document.createElement("img");
         readOrUnread.classList.add("readOrUnread");
-        
+        if (lastBook.read) {
+            readOrUnread.src = "/svg/read.svg";
+            bookCard.style.borderLeft = "8px solid #27ae61";
+          } else {
+            readOrUnread.src = "/svg/unread.svg";
+            bookCard.style.borderLeft = "8px solid #2596be";
+          }
         readOrUnread.addEventListener('click', (event) => {
           lastBook.changeRead()
           if (lastBook.read) {
-                      read.textContent = 'Status: Read';
-        } else {
-          read.textContent = 'Status: Not read yet';
+            read.textContent = 'Status: Read';
+            bookCard.style.borderLeft = "8px solid #27ae61";
+            readOrUnread.src = "/svg/read.svg";
+          } else {
+            read.textContent = 'Status: Not read yet';
+            bookCard.style.borderLeft = "8px solid #2596be";
+            readOrUnread.src = "/svg/unread.svg";
           }
-        })
-        if (lastBook.read) {
-          readOrUnread.src = "/svg/read.svg";
-        } else {
-          readOrUnread.src = "/svg/unread.svg";
-        }
+          updateTracking()
+          })
         actions.appendChild(removeBook)
         book.appendChild(actions)
         actions.appendChild(readOrUnread);
@@ -99,7 +105,19 @@ function displayBook() {
     bookCard.appendChild(book);
     bookCard.appendChild(bookPages);
     container.appendChild(bookCard);
+
   }
+
+function updateTracking() {
+  const totalBooks = document.getElementById('total');
+  totalBooks.textContent = myLibrary.length;
+  const readBooks = document.getElementById('read');
+  const numberOfRead = myLibrary.filter((book) => book.read === true);
+  readBooks.textContent = numberOfRead.length;
+  const unreadBooks = document.getElementById('unread');
+  const numberOfUnread = myLibrary.filter((book) => book.read === false);
+  unreadBooks.textContent = numberOfUnread.length;
+}
 
 
 
@@ -127,6 +145,7 @@ form.addEventListener('submit', (event) => {
     addBookToLibrary(title, author, read, pages);
     modal.classList.remove("open");
     form.reset();
+      updateTracking()
 });
 
 addBookToLibrary("The Three Body Problem", "Cixin Liu", false, 416)
