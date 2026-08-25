@@ -302,7 +302,7 @@ h3 {
 .book-actions {
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    gap: 10px;
 }
 
 .book-actions > img {
