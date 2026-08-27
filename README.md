@@ -3,9 +3,9 @@ A basic book library using HTML, CSS, and Javascript
 
 ## Skills Demonstrated
 Objects & Object Constructors:
--utilization of 'this' keyword
--using object constructor for the book object
--using prototype function on Book that toggle the read instance
+- utilization of 'this' keyword
+- using object constructor for the book object
+- using prototype function on Book that toggle the read instance
 
 ## Comments
 Been a while since I had written Javascript,
