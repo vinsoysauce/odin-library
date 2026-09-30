@@ -1,16 +1,75 @@
 let myLibrary = [];
 
-function Book( title, author, read, pages) {
-  // the constructor...
-  if (!new.target) {
-    throw Error("You must use the 'new' operator to call the constructor");
+// function Book( title, author, read, pages) {
+//   // the constructor...
+//   if (!new.target) {
+//     throw Error("You must use the 'new' operator to call the constructor");
+//   }
+//   this.id = crypto.randomUUID();
+//   this.title = title;
+//   this.author = author;
+//   this.read = read;
+//   this.pages = pages;
+// }
+
+class Book {
+  #bookTitle;
+  #bookAuthor;
+  #bookRead;
+  #bookPages;
+
+  constructor(bookTitle, bookAuthor, bookRead, bookPages) {
+    if (!new.target) {
+      throw Error("You must use the 'new' operator to call the constructor");
+    }
+
+    this.#bookTitle = Book.#validateTitle(bookTitle);
+    this.#bookAuthor = Book.#validateAuthor(bookAuthor);
+    this.#bookRead = Book.#validateRead(bookRead);
+    this.#bookPages = Book.#validatePages(bookPages)
   }
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.read = read;
-  this.pages = pages;
+
+  static #validateTitle(title) {
+    if (typeof title === 'string') {
+      let str = this.name.trim();
+      if (str.length >= 2) {
+        return str;
+      }
+    }
+    throw 'The title must be a string with at least 2 characters';
+  }
+
+  static #validateAuthor(author) {
+    if (typeof author === 'string') {
+      let str = this.author;
+      if (str.length >= 2) {
+        return str;
+      }
+    }
+    throw 'The author must be a string with at least 2 characters';
+  }
+
+  static #validateRead(read) {
+    if (typeof read === 'boolean') {
+      let bool = this.read;
+      if (bool === true || bool === false) {
+        return read;
+      }
+    }
+    throw 'The read must be a boolean value between true or false';
+  }
+
+  static #validatePages(pages) {
+    if (typeof pages === 'number') {
+      let num = this.pages;
+      if (num >= 1) {
+        return num;
+      }
+    }
+    throw 'The pages must be a number value greater than or equal to one';
+  }
 }
+
 
 function addBookToLibrary(title, author, read, pages) {
   // take params, create a book then store it in the array
