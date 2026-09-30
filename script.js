@@ -1,32 +1,58 @@
 let myLibrary = [];
 
-// function Book( title, author, read, pages) {
-//   // the constructor...
-//   if (!new.target) {
-//     throw Error("You must use the 'new' operator to call the constructor");
-//   }
-//   this.id = crypto.randomUUID();
-//   this.title = title;
-//   this.author = author;
-//   this.read = read;
-//   this.pages = pages;
-// }
-
 class Book {
   #bookTitle;
   #bookAuthor;
   #bookRead;
   #bookPages;
+  #bookId;
 
   constructor(bookTitle, bookAuthor, bookRead, bookPages) {
     if (!new.target) {
       throw Error("You must use the 'new' operator to call the constructor");
     }
 
+    this.#bookId = crypto.randomUUID();
     this.#bookTitle = Book.#validateTitle(bookTitle);
     this.#bookAuthor = Book.#validateAuthor(bookAuthor);
     this.#bookRead = Book.#validateRead(bookRead);
     this.#bookPages = Book.#validatePages(bookPages)
+  }
+
+  set #bookTitle(title) {
+    this.#bookTitle = Book.#validateTitle(title)
+  }
+
+  set #bookAuthor(author) {
+    this.#bookAuthor = Book.#validateAuthor(author)
+  }
+
+  set #bookRead(read) {
+    this.#bookRead = Book.#validateRead(read)
+  }
+
+  set #bookPages(pages) {
+    this.#bookPages = Book.#validatePages(pages)
+  }
+
+  get #bookId(id) {
+    return this.#bookId;
+  }
+
+  get #bookTitle(title) {
+    return this.#bookTitle;
+  }
+
+  get #bookAuthor(author) {
+    return this.#bookAuthor;
+  }
+
+  get #bookRead(read) {
+    return this.#bookRead;
+  }
+
+  get #bookPages(pages) {
+    return this.#bookPages;
   }
 
   static #validateTitle(title) {
