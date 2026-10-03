@@ -1,11 +1,11 @@
-// let myLibrary = [];
+let myLibrary = [];
 
 class Book {
   #id;
-  #title;
-  #author;
-  #read;
-  #pages;
+  // #title;
+  // #author;
+  // #read;
+  // #pages;
 
   constructor(title, author, read, pages) {
     if (!new.target) {
@@ -13,36 +13,49 @@ class Book {
     }
 
     this.#id = crypto.randomUUID();
-    this.#title = title;
-    this.#author = author;
-    this.#read = read;
-    this.#pages = pages;
-  }
-
-  getRead() {
-    return this.#read;
+    this.title = title;
+    this.author = author;
+    this.read = read;
+    this.pages = pages;
   }
 
   getId() {
     return this.#id;
   }
 
+  getTitle() {
+    return this.title;
+  }
+
+  getAuthor() {
+    return this.author;
+  }
+
+  getRead() {
+    return this.read;
+  }
+
+  getPages() {
+    return this.pages;
+  }
+
   changeRead() {
-    if (this.#read === true) {
-      this.#read = false;
+    if (this.read === true) {
+      this.read = false;
     } else {
-      this.#read = true;
+      this.read = true;
     }
   }
 
 }
 
-let myLibrary = []
 class Library extends Book {
 
   static addBookToLibrary(title, author, read, pages) {
     const newBook = new Book(title, author, read, pages)
     myLibrary.push(newBook);
+    Library.displayBook()
+    Library.updateTracking()
   }
 
   static displayBook() {
@@ -62,13 +75,13 @@ class Library extends Book {
     const read = document.createElement("div");
       read.classList.add("readStatus");
     for (let item in lastBook) {
-      if (lastBook[item] === lastBook.title) {
+      if (lastBook[item] === lastBook.getTitle()) {
         const title = document.createElement("div");
         title.classList.add("title")
         title.textContent = (lastBook[item]);
         details.appendChild(title)
         book.appendChild(details)
-      } else if (lastBook[item] === lastBook.author) {
+      } else if (lastBook[item] === lastBook.getAuthor()) {
           const author = document.createElement("div");
           author.classList.add("author")
           author.textContent = (lastBook[item]);
@@ -82,14 +95,14 @@ class Library extends Book {
         }
           details.appendChild(read)
           book.appendChild(details)
-        } else if (lastBook[item] === lastBook.pages) {
+        } else if (lastBook[item] === lastBook.getPages()) {
           const removeBook = document.createElement("img");
           removeBook.classList.add("remove-book");
           removeBook.src = "./svg/remove.svg";
           removeBook.addEventListener('click', (event) => {
           myLibrary = myLibrary.filter((book) => book.getId() !== lastBook.getId())
           container.removeChild(bookCard)
-          updateTracking()
+          Library.updateTracking()
         })
         const readOrUnread = document.createElement("img");
         readOrUnread.classList.add("readOrUnread");
@@ -111,7 +124,7 @@ class Library extends Book {
             bookCard.style.borderLeft = "8px solid #2596be";
             readOrUnread.src = "./svg/unread.svg";
           }
-          Library.updateTracking()
+            Library.updateTracking()
           })
         actions.appendChild(removeBook)
         book.appendChild(actions)
@@ -157,15 +170,21 @@ form.addEventListener('submit', (event) => {
     const author = document.getElementById('book_author').value;
     const read = document.getElementById('book_read').checked;
     const pages = Number(document.getElementById('book_pages').value)
-    addBookToLibrary(title, author, read, pages);
+    Library.addBookToLibrary(title, author, read, pages);
     modal.classList.remove("open");
     form.reset();
-      Library.updateTracking()
 });
+
+
 
 Library.addBookToLibrary("The Three Body Problem", "Cixin Liu", false, 416)
 Library.addBookToLibrary("The Dark Forest", "Cixin Liu", false, 528)
 Library.addBookToLibrary("Death's End", "Cixin Liu", false, 624)
+
+
+
+
+
 
 
 // function addBookToLibrary(title, author, read, pages) {
